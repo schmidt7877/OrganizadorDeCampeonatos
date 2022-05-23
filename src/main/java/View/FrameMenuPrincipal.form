@@ -111,7 +111,7 @@
     <Component class="javax.swing.JLabel" name="FundoMenuPrincipal">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\cmate\OneDrive\&#xc1;rea de Trabalho\TRABALHO DE HIEDL\IMAGENS UTILIZADAS\FundoMenuPrincipal.png"/>
+          <Image iconType="3" name="/imagens/FundoMenuPrincipal.png"/>
         </Property>
       </Properties>
       <Constraints>

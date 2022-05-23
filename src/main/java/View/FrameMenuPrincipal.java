@@ -80,7 +80,7 @@ public class FrameMenuPrincipal extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 330, 100));
 
-        FundoMenuPrincipal.setIcon(new javax.swing.ImageIcon("C:\\Users\\cmate\\OneDrive\\Área de Trabalho\\TRABALHO DE HIEDL\\IMAGENS UTILIZADAS\\FundoMenuPrincipal.png")); // NOI18N
+        FundoMenuPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/FundoMenuPrincipal.png"))); // NOI18N
         getContentPane().add(FundoMenuPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jButton5.setBackground(new java.awt.Color(0, 0, 0));
