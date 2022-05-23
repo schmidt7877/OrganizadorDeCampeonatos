@@ -6,6 +6,7 @@ package View;
 
 import Model.dao.UsuarioDAO;
 import Models.Usuario;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -77,6 +78,7 @@ public class FrameCadastroUsuario extends javax.swing.JFrame {
         getContentPane().add(lbFundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void tfLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfLoginActionPerformed
@@ -88,9 +90,20 @@ public class FrameCadastroUsuario extends javax.swing.JFrame {
         Usuario usuario = new Usuario();
         UsuarioDAO dao = new UsuarioDAO();
         
+        if(tfLogin.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "ERRO! CAMPO LOGIN ESTÁ VAZI0");
+        }else if(tfSenha.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "ERRO! CAMPO SENHA ESTÁ VAZI0");
+        }else {    
         usuario.setLogin(tfLogin.getText());
         usuario.setSenha(new String(tfSenha.getPassword()));
         dao.create(usuario);
+        FrameLogin tela = new FrameLogin();
+        tela.setVisible(true);
+        this.dispose();
+        }
+        
+        
         
     }//GEN-LAST:event_btCadastrarActionPerformed
 

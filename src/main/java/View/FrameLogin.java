@@ -106,6 +106,7 @@ public class FrameLogin extends javax.swing.JFrame {
        
         FrameCadastroUsuario tela = new FrameCadastroUsuario();
         tela.setVisible(true);
+        this.dispose();
         
     }//GEN-LAST:event_btCadastrarActionPerformed
 
