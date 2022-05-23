@@ -73,7 +73,7 @@ public class FrameLogin extends javax.swing.JFrame {
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 540, 30, 10));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\cmate\\OneDrive\\Área de Trabalho\\TRABALHO DE HIEDL\\IMAGENS UTILIZADAS\\login.png")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/login.png"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
