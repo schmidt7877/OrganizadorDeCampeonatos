@@ -86,25 +86,8 @@ public class FrameCadastroUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_tfLoginActionPerformed
 
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
-        
-        Usuario usuario = new Usuario();
-        UsuarioDAO dao = new UsuarioDAO();
-        
-        if(tfLogin.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "ERRO! CAMPO LOGIN ESTÁ VAZI0");
-        }else if(tfSenha.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "ERRO! CAMPO SENHA ESTÁ VAZI0");
-        }else {    
-        usuario.setLogin(tfLogin.getText());
-        usuario.setSenha(new String(tfSenha.getPassword()));
-        dao.create(usuario);
-        FrameLogin tela = new FrameLogin();
-        tela.setVisible(true);
-        this.dispose();
-        }
-        
-        
-        
+
+        cadastrar();
     }//GEN-LAST:event_btCadastrarActionPerformed
 
     /**
@@ -151,4 +134,23 @@ public class FrameCadastroUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField tfLogin;
     private javax.swing.JPasswordField tfSenha;
     // End of variables declaration//GEN-END:variables
+
+    private void cadastrar() {
+        Usuario usuario = new Usuario();
+        UsuarioDAO dao = new UsuarioDAO();
+
+        if (tfLogin.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "ERRO! CAMPO LOGIN ESTÁ VAZI0");
+        } else if (tfSenha.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "ERRO! CAMPO SENHA ESTÁ VAZI0");
+        } else {
+            usuario.setLogin(tfLogin.getText());
+            usuario.setSenha(new String(tfSenha.getPassword()));
+            dao.create(usuario);
+            FrameLogin tela = new FrameLogin();
+            tela.setVisible(true);
+            this.dispose();
+        }
+
+    }
 }

@@ -26,8 +26,9 @@ public class CampeonatoDAO {
             stmt = con.prepareStatement("INSERT INTO campeonato (nome,usuario_id,data)VALUES(?,?,?)");
             stmt.setString(1, campeonato.getNome());
             stmt.setInt(2, campeonato.getUsuarioId());
-            
+            stmt.setObject(3, campeonato.getData());
            
+         
             stmt.executeUpdate();
             
             

@@ -6,6 +6,9 @@ package View;
 
 import Model.dao.UsuarioDAO;
 import Models.Usuario;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -99,15 +102,16 @@ public class FrameLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_tfLoginActionPerformed
 
     private void btEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEntrarActionPerformed
-        // TODO add your handling code here:
+        logar();
+
     }//GEN-LAST:event_btEntrarActionPerformed
 
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
-       
+
         FrameCadastroUsuario tela = new FrameCadastroUsuario();
         tela.setVisible(true);
         this.dispose();
-        
+
     }//GEN-LAST:event_btCadastrarActionPerformed
 
     /**
@@ -155,4 +159,31 @@ public class FrameLogin extends javax.swing.JFrame {
     private javax.swing.JTextField tfLogin;
     private javax.swing.JPasswordField tfSenha;
     // End of variables declaration//GEN-END:variables
+
+    private void logar() {
+
+        try {
+
+            Usuario usuario = new Usuario();
+            UsuarioDAO dao = new UsuarioDAO();
+
+            usuario.setLogin(tfLogin.getText());
+            usuario.setSenha(new String(tfSenha.getPassword()));
+            ResultSet rs = dao.autenticarusuario(usuario);
+
+            if (rs.next()) {
+                FrameMenuPrincipal tela = new FrameMenuPrincipal();
+                tela.setVisible(true);
+                this.dispose();
+
+            } else {
+                JOptionPane.showMessageDialog(null, "USUARIO OU SENHA INVALIDA");
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "FRMLOGIN ERRO" + ex);
+        }
+
+    }
+
 }
