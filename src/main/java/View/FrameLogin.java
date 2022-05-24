@@ -168,7 +168,7 @@ public class FrameLogin extends javax.swing.JFrame {
             UsuarioDAO dao = new UsuarioDAO();
 
             usuario.setLogin(tfLogin.getText());
-            usuario.setSenha(new String (tfSenha.getPassword()));
+            usuario.setSenha(new String(tfSenha.getPassword()));
             ResultSet rs = dao.autenticarusuario(usuario);
 
             if (rs.next()) {

@@ -6,6 +6,8 @@ package Model.dao;
 
 import Connection.ConnectionFactory;
 import Models.Usuario;
+import java.math.BigInteger;
+import java.security.MessageDigest;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,9 +26,9 @@ public class UsuarioDAO {
         PreparedStatement stmt = null;
 
         try {
-         stmt = con.prepareStatement("INSERT INTO usuario (login,senha)VALUES(?,?)");
+            stmt = con.prepareStatement("INSERT INTO usuario (login,senha)VALUES(?,?)");
             stmt.setString(1, usuario.getLogin());
-            stmt.setString(2, usuario.getSenha());
+            stmt.setString(2, encriptografar(usuario.getSenha()));
 
             stmt.executeUpdate();
 
@@ -48,7 +50,7 @@ public class UsuarioDAO {
         try {
             stmt = con.prepareStatement("SELECT * FROM usuario WHERE login = ? and senha = ? ");
             stmt.setString(1, usuario.getLogin());
-            stmt.setString(2, usuario.getSenha());
+            stmt.setString(2, encriptografar(usuario.getSenha()));
 
             ResultSet rs = stmt.executeQuery();
             return rs;
@@ -59,10 +61,16 @@ public class UsuarioDAO {
         }
 
     }
-}    
     
-    
-
-
-    
-
+    public static String encriptografar (String senha){
+        String retorno = "";
+        MessageDigest md;
+        
+        try {
+            md = MessageDigest.getInstance("MD5");
+            BigInteger hash = new BigInteger(1,md.digest(senha.getBytes()));
+            retorno = hash.toString(16);
+        } catch (Exception e) {}
+            return retorno;
+    }
+}
