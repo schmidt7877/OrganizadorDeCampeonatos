@@ -22,37 +22,28 @@ public class FrameVisualizarCampeonato extends javax.swing.JFrame {
      */
     public FrameVisualizarCampeonato() {
         initComponents();
-        
+
         DefaultTableModel modelo = (DefaultTableModel) jtCampeonatos.getModel();
         jtCampeonatos.setRowSorter(new TableRowSorter(modelo));
-        
-    
-        UsuarioDAO dao = new UsuarioDAO();
-        Usuario usuario = dao.getById(FrameLogin.iduser);
-        
-        
-        
-  
+
         readjtable();
-        
+
     }
-    
-    public void readjtable(){
+
+    public void readjtable() {
         DefaultTableModel modelo = (DefaultTableModel) jtCampeonatos.getModel();
-        
+
         CampeonatoDAO dao = new CampeonatoDAO();
-        
-        for (Campeonato c: dao.read()){
-            
-            modelo.addRow(new Object[] {
+
+        for (Campeonato c : dao.read()) {
+
+            modelo.addRow(new Object[]{
                 c.getId(),
                 c.getNome(),
-                c.getUsuarioId(),
-   
-        });
-            
+                c.getUsuarioId(),});
+
         }
-        
+
     }
 
     /**
@@ -66,6 +57,7 @@ public class FrameVisualizarCampeonato extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jtCampeonatos = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -87,21 +79,45 @@ public class FrameVisualizarCampeonato extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jtCampeonatos);
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botao-voltar.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 988, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton1)
+                .addGap(58, 58, 58)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 241, Short.MAX_VALUE))
+                .addContainerGap(139, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        FrameCampeonatos tela = new FrameCampeonatos();
+        tela.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -139,6 +155,7 @@ public class FrameVisualizarCampeonato extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jtCampeonatos;
     // End of variables declaration//GEN-END:variables
