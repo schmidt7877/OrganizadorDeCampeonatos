@@ -22,7 +22,7 @@ public class FrameCampeonatos extends javax.swing.JFrame {
         UsuarioDAO dao = new UsuarioDAO();
         Usuario usuario = dao.getById(FrameLogin.iduser);
         
-        lbNomeUsuario.setText("BEM-VINDO, "+usuario.getLogin());
+        lbNomeUsuario.setText("Bem-Vindo, "+usuario.getLogin()+".");
         
         
         
@@ -99,7 +99,9 @@ public class FrameCampeonatos extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        FrameVisualizarCampeonato tela = new FrameVisualizarCampeonato();
+        tela.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
