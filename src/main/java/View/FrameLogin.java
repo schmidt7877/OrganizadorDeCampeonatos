@@ -172,7 +172,7 @@ public class FrameLogin extends javax.swing.JFrame {
             ResultSet rs = dao.autenticarusuario(usuario);
 
             if (rs.next()) {
-                FrameMenuPrincipal tela = new FrameMenuPrincipal();
+                FrameCampeonatos tela = new FrameCampeonatos();
                 tela.setVisible(true);
                 this.dispose();
 
