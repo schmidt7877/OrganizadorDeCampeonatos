@@ -4,6 +4,13 @@
  */
 package View;
 
+import Model.dao.CampeonatoDAO;
+import Model.dao.UsuarioDAO;
+import Models.Campeonato;
+import Models.Usuario;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+
 /**
  *
  * @author cmate
@@ -15,6 +22,37 @@ public class FrameVisualizarCampeonato extends javax.swing.JFrame {
      */
     public FrameVisualizarCampeonato() {
         initComponents();
+        
+        DefaultTableModel modelo = (DefaultTableModel) jtCampeonatos.getModel();
+        jtCampeonatos.setRowSorter(new TableRowSorter(modelo));
+        
+    
+        UsuarioDAO dao = new UsuarioDAO();
+        Usuario usuario = dao.getById(FrameLogin.iduser);
+        
+        
+        
+  
+        readjtable();
+        
+    }
+    
+    public void readjtable(){
+        DefaultTableModel modelo = (DefaultTableModel) jtCampeonatos.getModel();
+        
+        CampeonatoDAO dao = new CampeonatoDAO();
+        
+        for (Campeonato c: dao.read()){
+            
+            modelo.addRow(new Object[] {
+                c.getId(),
+                c.getNome(),
+                c.getUsuarioId(),
+   
+        });
+            
+        }
+        
     }
 
     /**
@@ -26,17 +64,40 @@ public class FrameVisualizarCampeonato extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtCampeonatos = new javax.swing.JTable();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jtCampeonatos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "id", "nome", "usuario_id"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jtCampeonatos);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 550, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 241, Short.MAX_VALUE))
         );
 
         pack();
@@ -78,5 +139,7 @@ public class FrameVisualizarCampeonato extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jtCampeonatos;
     // End of variables declaration//GEN-END:variables
 }

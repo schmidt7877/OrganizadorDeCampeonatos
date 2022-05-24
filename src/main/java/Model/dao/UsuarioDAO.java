@@ -100,7 +100,7 @@ public class UsuarioDAO {
             return usuario;
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Usuario ou Senha INVALIDOS " + ex);
+            JOptionPane.showMessageDialog(null, "" + ex);
             return null;
         }
 

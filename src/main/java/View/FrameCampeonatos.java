@@ -22,6 +22,8 @@ public class FrameCampeonatos extends javax.swing.JFrame {
         UsuarioDAO dao = new UsuarioDAO();
         Usuario usuario = dao.getById(FrameLogin.iduser);
         
+        
+        
         lbNomeUsuario.setText("Bem-Vindo, "+usuario.getLogin()+".");
         
         

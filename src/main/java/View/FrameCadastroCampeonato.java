@@ -77,21 +77,8 @@ public class FrameCadastroCampeonato extends javax.swing.JFrame {
     }//GEN-LAST:event_tfIdUsuarioActionPerformed
 
     private void btCadastrarCampActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarCampActionPerformed
+        cadastrarcamp();
         
-        CampeonatoDAO dao = new CampeonatoDAO();
-        Campeonato campeonato = new Campeonato();
-        
-        
-        String nomecamp = tfNomeCamp.getText();
-        campeonato.setNome(nomecamp);
-        campeonato.setUsuarioId(FrameLogin.iduser);
-        campeonato.setData(OffsetDateTime.now());
-        
-        dao.create(campeonato);
-    
-        FrameCampeonatos tela = new FrameCampeonatos();
-        tela.setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_btCadastrarCampActionPerformed
 
     /**
@@ -136,4 +123,21 @@ public class FrameCadastroCampeonato extends javax.swing.JFrame {
     private javax.swing.JTextField tfIdUsuario;
     private javax.swing.JTextField tfNomeCamp;
     // End of variables declaration//GEN-END:variables
+private void cadastrarcamp(){
+    CampeonatoDAO dao = new CampeonatoDAO();
+        Campeonato campeonato = new Campeonato();
+        
+        
+        String nomecamp = tfNomeCamp.getText();
+        campeonato.setNome(nomecamp);
+        campeonato.setUsuarioId(FrameLogin.iduser);
+        campeonato.setData(OffsetDateTime.now());
+        
+        dao.create(campeonato);
+    
+        FrameCampeonatos tela = new FrameCampeonatos();
+        tela.setVisible(true);
+        this.dispose();
+}
+
 }

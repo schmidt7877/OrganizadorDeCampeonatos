@@ -6,9 +6,16 @@ package Model.dao;
 
 import Connection.ConnectionFactory;
 import Models.Campeonato;
+import Models.Usuario;
+import View.FrameLogin;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -41,6 +48,43 @@ public class CampeonatoDAO {
         }
         
         
+    }
+    
+    public List<Campeonato> read(){
+        
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        List<Campeonato> campeonatos = new ArrayList<>();
+        
+        try {
+            
+           UsuarioDAO dao = new UsuarioDAO();
+           Usuario usuario = dao.getById(FrameLogin.iduser);
+            
+            stmt = con.prepareStatement("SELECT * FROM campeonato WHERE usuario_id = ? ");
+            stmt.setInt(1,usuario.getId());
+            rs = stmt.executeQuery();
+            
+            while (rs.next()){
+                
+                Campeonato campeonato = new Campeonato();
+                
+                campeonato.setId(rs.getInt("id"));
+                campeonato.setNome(rs.getString("nome"));
+                campeonato.setUsuarioId(rs.getInt("usuario_id"));
+                campeonatos.add(campeonato);
+                
+                
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(CampeonatoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+        return campeonatos;
     }
     
 }
