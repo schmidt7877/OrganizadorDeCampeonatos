@@ -76,9 +76,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="BEM-VINDO, NOME DE USUARIO"/>
       </Properties>
-      <Events>
-        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbNomeUsuarioMouseEntered"/>
-      </Events>
     </Component>
   </SubComponents>
 </Form>

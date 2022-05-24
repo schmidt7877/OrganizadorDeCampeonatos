@@ -50,11 +50,6 @@ public class FrameCampeonatos extends javax.swing.JFrame {
         });
 
         lbNomeUsuario.setText("BEM-VINDO, NOME DE USUARIO");
-        lbNomeUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lbNomeUsuarioMouseEntered(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -94,12 +89,6 @@ public class FrameCampeonatos extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void lbNomeUsuarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbNomeUsuarioMouseEntered
-        Usuario usuario = new Usuario();
-        lbNomeUsuario.setText(usuario.getLogin());
-        
-    }//GEN-LAST:event_lbNomeUsuarioMouseEntered
 
     /**
      * @param args the command line arguments
