@@ -23,68 +23,115 @@ import javax.swing.JOptionPane;
  * @author cmate
  */
 public class CampeonatoDAO {
-   
-    public void create(Campeonato campeonato){
-        
+
+    public void create(Campeonato campeonato) {
+
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
-        
+
         try {
             stmt = con.prepareStatement("INSERT INTO campeonato (nome,usuario_id,data)VALUES(?,?,?)");
             stmt.setString(1, campeonato.getNome());
             stmt.setInt(2, campeonato.getUsuarioId());
             stmt.setObject(3, campeonato.getData());
-           
-         
+
             stmt.executeUpdate();
-            
-            
+
             JOptionPane.showMessageDialog(null, "Cadastro efetuado com Sucesso!");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao cadastrar: "+ex);
-        }finally{
+            JOptionPane.showMessageDialog(null, "Erro ao cadastrar: " + ex);
+        } finally {
             ConnectionFactory.closeConnection(con, stmt);
-            
+
         }
-        
-        
+
     }
-    
-    public List<Campeonato> read(){
-        
+
+    public List<Campeonato> read() {
+
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        
+
         List<Campeonato> campeonatos = new ArrayList<>();
-        
+
         try {
-            
-           UsuarioDAO dao = new UsuarioDAO();
-           Usuario usuario = dao.getById(FrameLogin.iduser);
-            
+
+            UsuarioDAO dao = new UsuarioDAO();
+            Usuario usuario = dao.getById(FrameLogin.iduser);
+
             stmt = con.prepareStatement("SELECT * FROM campeonato WHERE usuario_id = ? ");
-            stmt.setInt(1,usuario.getId());
+            stmt.setInt(1, usuario.getId());
             rs = stmt.executeQuery();
-            
-            while (rs.next()){
-                
+
+            while (rs.next()) {
+
                 Campeonato campeonato = new Campeonato();
-                
+
                 campeonato.setId(rs.getInt("id"));
                 campeonato.setNome(rs.getString("nome"));
                 campeonato.setUsuarioId(rs.getInt("usuario_id"));
                 campeonatos.add(campeonato);
-                
-                
+
             }
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(CampeonatoDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }finally{
+        } finally {
             ConnectionFactory.closeConnection(con, stmt, rs);
         }
         return campeonatos;
     }
+
+    public Campeonato getbyid(int id) {
+
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            stmt = con.prepareStatement("SELECT * FROM campeonato WHERE id = ? ");
+
+            stmt.setInt(1, id);
+
+            rs = stmt.executeQuery();
+
+            rs.next();
+
+            Campeonato campeonato = new Campeonato();
+
+            campeonato.setId(rs.getInt("id"));
+            campeonato.setNome(rs.getString("id"));
+
+            return campeonato;
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "" + ex);
+            return null;
+        }
+
+    }
     
+    public ResultSet autenticarcamp(Campeonato campeonato) {
+
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+
+        try {
+            stmt = con.prepareStatement("SELECT * FROM campeonato WHERE id = ? and nome = ? ");
+            stmt.setInt(1, campeonato.getId());
+            stmt.setString(2, campeonato.getNome());
+            
+            
+            ResultSet rs = stmt.executeQuery();
+
+            return rs;
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "CAMPEONATO INVÁLIDO " + ex);
+            return null;
+        }
+
+    }
+
 }

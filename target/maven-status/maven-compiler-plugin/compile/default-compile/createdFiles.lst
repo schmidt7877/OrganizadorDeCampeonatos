@@ -3,6 +3,8 @@ View\FrameCadastroUsuario.class
 View\FrameCadastrarPartida$5.class
 View\FrameCadastrarPartida$15.class
 View\FrameMenuPrincipal$5.class
+View\FrameVisualizarCampeonato$4.class
+View\FrameCadastroCampeonato$2.class
 View\FrameCampeonatos$2.class
 Models\Partida.class
 View\FrameMenuPrincipal.class
@@ -12,10 +14,13 @@ View\FrameCadastrarPartida$12.class
 Models\Usuario.class
 View\FrameCadastrarPartida$9.class
 View\FrameCadastrarPartida$18.class
+View\FrameCadastroCampeonato$1.class
+View\FrameVisualizarCampeonato$1.class
 View\FrameCadastrarPartida$1.class
 Models\Time.class
 View\FrameCadastrarPartida.class
 View\FrameCadastroUsuario$3.class
+View\FrameVisualizarCampeonato$5.class
 Models\PartidaStatus.class
 View\FrameCampeonatos.class
 View\FrameCadastrarPartida$16.class
@@ -25,6 +30,7 @@ View\FrameMenuPrincipal$2.class
 View\FrameCampeonatos$1.class
 View\FrameCadastrarPartida$2.class
 Models\Mapa.class
+View\FrameVisualizarCampeonato$2.class
 View\FrameCadastrarPartida$19.class
 View\FrameCadastroUsuario$2.class
 Models\ItemPartida.class
@@ -33,6 +39,7 @@ View\FrameCadastrarPartida$3.class
 View\FrameCadastrarPartida$17.class
 View\FrameLogin.class
 View\FrameMenuPrincipal$3.class
+View\FrameVisualizarCampeonato$3.class
 View\FrameCadastrarPartida$10.class
 Connection\ConnectionFactory.class
 View\FrameCadastrarPartida$6.class
@@ -44,8 +51,11 @@ View\FrameCadastrarPartida$4.class
 View\FrameCampeonatos$3.class
 View\FrameMenuPrincipal$1.class
 Model\dao\UsuarioDAO.class
+View\FrameCadastroCampeonato$3.class
+View\FrameVisualizarCampeonato.class
 View\FrameCadastrarPartida$11.class
 View\FrameCadastrarPartida$7.class
 View\FrameMenuPrincipal$7.class
 View\FrameCadastroUsuario$1.class
+View\FrameCadastroCampeonato.class
 View\FrameMenuPrincipal$4.class

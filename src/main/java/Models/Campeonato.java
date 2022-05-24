@@ -20,6 +20,8 @@ public class Campeonato {
     public Campeonato() {
     }
 
+    
+
     public int getId() {
         return id;
     }

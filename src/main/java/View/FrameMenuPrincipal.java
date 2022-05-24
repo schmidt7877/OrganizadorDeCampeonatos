@@ -4,6 +4,9 @@
  */
 package View;
 
+import Model.dao.CampeonatoDAO;
+import Models.Campeonato;
+
 /**
  *
  * @author cmate
@@ -15,6 +18,13 @@ public class FrameMenuPrincipal extends javax.swing.JFrame {
      */
     public FrameMenuPrincipal() {
         initComponents();
+        
+        CampeonatoDAO dao = new CampeonatoDAO();
+        Campeonato campeonato = dao.getbyid(FrameVisualizarCampeonato.idcamp);
+        
+        lbNomeCampeonato.setText("CAMPEONATO: "+campeonato.getNome()+".");
+        
+        
     }
 
     /**
@@ -26,7 +36,7 @@ public class FrameMenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lbNomeCampeonato = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -38,9 +48,9 @@ public class FrameMenuPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("NOME DO CAMPEONATO");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 140, -1));
+        lbNomeCampeonato.setForeground(new java.awt.Color(255, 255, 255));
+        lbNomeCampeonato.setText("NOME DO CAMPEONATO");
+        getContentPane().add(lbNomeCampeonato, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 360, -1));
 
         jButton4.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         jButton4.setText("VISUALIZAR PARTIDAS");
@@ -176,6 +186,6 @@ public class FrameMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lbNomeCampeonato;
     // End of variables declaration//GEN-END:variables
 }
