@@ -16,6 +16,8 @@ import javax.swing.JOptionPane;
  */
 public class FrameLogin extends javax.swing.JFrame {
 
+    public static int iduser;
+
     /**
      * Creates new form FrameLogin
      */
@@ -164,20 +166,31 @@ public class FrameLogin extends javax.swing.JFrame {
 
         try {
 
-            Usuario usuario = new Usuario();
-            UsuarioDAO dao = new UsuarioDAO();
+            String login = tfLogin.getText().trim();
+            String senha = tfSenha.getText().trim();
 
-            usuario.setLogin(tfLogin.getText());
-            usuario.setSenha(new String(tfSenha.getPassword()));
-            ResultSet rs = dao.autenticarusuario(usuario);
-
-            if (rs.next()) {
-                FrameCampeonatos tela = new FrameCampeonatos();
-                tela.setVisible(true);
-                this.dispose();
-
+            if (login.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "ERRO! CAMPO LOGIN ESTÁ VAZI0");
+            } else if (senha.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "ERRO! CAMPO SENHA ESTÁ VAZI0");
             } else {
-                JOptionPane.showMessageDialog(null, "USUARIO OU SENHA INVALIDA");
+
+                Usuario usuario = new Usuario();
+                UsuarioDAO dao = new UsuarioDAO();
+
+                usuario.setLogin(tfLogin.getText());
+                usuario.setSenha(new String(tfSenha.getPassword()));
+                ResultSet rs = dao.autenticarusuario(usuario);
+
+                if (rs.next()) {
+                    FrameLogin.iduser = rs.getInt("id");
+                    FrameCampeonatos tela = new FrameCampeonatos();
+                    tela.setVisible(true);
+                    this.dispose();
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "USUARIO OU SENHA INVALIDA");
+                }
             }
 
         } catch (SQLException ex) {

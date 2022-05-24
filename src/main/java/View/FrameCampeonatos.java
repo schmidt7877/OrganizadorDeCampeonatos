@@ -4,6 +4,7 @@
  */
 package View;
 
+import Model.dao.UsuarioDAO;
 import Models.Usuario;
 
 /**
@@ -17,6 +18,15 @@ public class FrameCampeonatos extends javax.swing.JFrame {
      */
     public FrameCampeonatos() {
         initComponents();
+        
+        UsuarioDAO dao = new UsuarioDAO();
+        Usuario usuario = dao.getById(FrameLogin.iduser);
+        
+        lbNomeUsuario.setText("BEM-VINDO, "+usuario.getLogin());
+        
+        
+        
+   
     }
 
     /**

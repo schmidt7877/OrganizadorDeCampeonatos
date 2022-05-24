@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -53,6 +54,7 @@ public class UsuarioDAO {
             stmt.setString(2, encriptografar(usuario.getSenha()));
 
             ResultSet rs = stmt.executeQuery();
+
             return rs;
 
         } catch (SQLException ex) {
@@ -61,16 +63,46 @@ public class UsuarioDAO {
         }
 
     }
-    
-    public static String encriptografar (String senha){
+
+    public static String encriptografar(String senha) {
         String retorno = "";
         MessageDigest md;
-        
+
         try {
             md = MessageDigest.getInstance("MD5");
-            BigInteger hash = new BigInteger(1,md.digest(senha.getBytes()));
+            BigInteger hash = new BigInteger(1, md.digest(senha.getBytes()));
             retorno = hash.toString(16);
-        } catch (Exception e) {}
-            return retorno;
+        } catch (Exception e) {
+        }
+        return retorno;
+    }
+
+    public Usuario getById(int id) {
+
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            stmt = con.prepareStatement("SELECT * FROM usuario WHERE id = ? ");
+
+            stmt.setInt(1, id);
+
+            rs = stmt.executeQuery();
+
+            rs.next();
+
+            Usuario usuario = new Usuario();
+            
+            usuario.setId(rs.getInt("id"));
+            usuario.setLogin(rs.getString("login"));
+            
+            return usuario;
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Usuario ou Senha INVALIDOS " + ex);
+            return null;
+        }
+
     }
 }

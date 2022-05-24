@@ -4,6 +4,10 @@
  */
 package View;
 
+import Model.dao.CampeonatoDAO;
+import Models.Campeonato;
+import java.time.OffsetDateTime;
+
 /**
  *
  * @author cmate
@@ -15,6 +19,12 @@ public class FrameCadastroCampeonato extends javax.swing.JFrame {
      */
     public FrameCadastroCampeonato() {
         initComponents();
+        
+        tfIdUsuario.setEditable(false);
+        tfIdUsuario.setText(String.valueOf(FrameLogin.iduser));
+        
+        
+        
     }
 
     /**
@@ -45,6 +55,8 @@ public class FrameCadastroCampeonato extends javax.swing.JFrame {
         getContentPane().add(btCadastrarCamp, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 420, 120, 40));
         getContentPane().add(tfNomeCamp, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, 280, 50));
 
+        tfIdUsuario.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        tfIdUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         tfIdUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfIdUsuarioActionPerformed(evt);
@@ -61,10 +73,22 @@ public class FrameCadastroCampeonato extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tfIdUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfIdUsuarioActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_tfIdUsuarioActionPerformed
 
     private void btCadastrarCampActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarCampActionPerformed
+        
+        CampeonatoDAO dao = new CampeonatoDAO();
+        Campeonato campeonato = new Campeonato();
+        
+        
+        String nomecamp = tfNomeCamp.getText();
+        campeonato.setNome(nomecamp);
+        campeonato.setUsuarioId(FrameLogin.iduser);
+        campeonato.setData(OffsetDateTime.now());
+        
+        dao.create(campeonato);
+    
         FrameCampeonatos tela = new FrameCampeonatos();
         tela.setVisible(true);
         this.dispose();
