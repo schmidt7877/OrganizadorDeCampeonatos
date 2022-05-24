@@ -4,6 +4,8 @@
  */
 package View;
 
+import Models.Usuario;
+
 /**
  *
  * @author cmate
@@ -28,7 +30,7 @@ public class FrameCampeonatos extends javax.swing.JFrame {
 
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        lbNomeUsuario = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,7 +49,12 @@ public class FrameCampeonatos extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("BEM-VINDO, NOME DE USUARIO");
+        lbNomeUsuario.setText("BEM-VINDO, NOME DE USUARIO");
+        lbNomeUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lbNomeUsuarioMouseEntered(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -61,14 +68,14 @@ public class FrameCampeonatos extends javax.swing.JFrame {
                 .addGap(133, 133, 133))
             .addGroup(layout.createSequentialGroup()
                 .addGap(42, 42, 42)
-                .addComponent(jLabel1)
+                .addComponent(lbNomeUsuario)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addComponent(jLabel1)
+                .addComponent(lbNomeUsuario)
                 .addGap(165, 165, 165)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -87,6 +94,12 @@ public class FrameCampeonatos extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void lbNomeUsuarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbNomeUsuarioMouseEntered
+        Usuario usuario = new Usuario();
+        lbNomeUsuario.setText(usuario.getLogin());
+        
+    }//GEN-LAST:event_lbNomeUsuarioMouseEntered
 
     /**
      * @param args the command line arguments
@@ -126,6 +139,6 @@ public class FrameCampeonatos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lbNomeUsuario;
     // End of variables declaration//GEN-END:variables
 }
