@@ -113,6 +113,7 @@ public class FrameVisualizarCampeonato extends javax.swing.JFrame {
         jLabel3.setText("USUARIO ID:");
 
         btAcessar.setText("ACESSAR CAMPEONATO");
+        btAcessar.setEnabled(false);
         btAcessar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btAcessarActionPerformed(evt);
@@ -195,6 +196,9 @@ public class FrameVisualizarCampeonato extends javax.swing.JFrame {
         tfId.setText(modelo.getValueAt(linhaselecionada, 0).toString());
         tfNome.setText(modelo.getValueAt(linhaselecionada, 1).toString());
         tfUsuarioId.setText(modelo.getValueAt(linhaselecionada, 2).toString());
+        
+        btAcessar.setEnabled(true);
+
 
     }//GEN-LAST:event_jtCampeonatosMouseClicked
 
@@ -253,10 +257,7 @@ public class FrameVisualizarCampeonato extends javax.swing.JFrame {
             int id = (Integer.parseInt(tfId.getText()));
             String nome = tfNome.getText();
 
-            if (nome.isBlank()) {
-                JOptionPane.showMessageDialog(null, "ERRO! SELECIONE UM CAMPEONATO");
-            } else {
-
+            if (! nome.isEmpty()) {
                 Campeonato campeonato = new Campeonato();
                 CampeonatoDAO dao = new CampeonatoDAO();
 
@@ -273,6 +274,9 @@ public class FrameVisualizarCampeonato extends javax.swing.JFrame {
                 } else {
                     JOptionPane.showMessageDialog(null, "CAMPEONATO INVALIDO");
                 }
+            } else {
+                JOptionPane.showMessageDialog(null, "ERRO! SELECIONE UM CAMPEONATO");
+
             }
 
         } catch (SQLException ex) {

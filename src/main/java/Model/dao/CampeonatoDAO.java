@@ -83,6 +83,27 @@ public class CampeonatoDAO {
         return campeonatos;
     }
 
+    public ResultSet autenticarcamp(Campeonato campeonato) {
+
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+
+        try {
+            stmt = con.prepareStatement("SELECT * FROM campeonato WHERE id = ? and nome = ? ");
+            stmt.setInt(1, campeonato.getId());
+            stmt.setString(2, campeonato.getNome());
+
+            ResultSet rs = stmt.executeQuery();
+
+            return rs;
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "CAMPEONATO INVÁLIDO " + ex);
+            return null;
+        }
+
+    }
+
     public Campeonato getbyid(int id) {
 
         Connection con = ConnectionFactory.getConnection();
@@ -101,34 +122,12 @@ public class CampeonatoDAO {
             Campeonato campeonato = new Campeonato();
 
             campeonato.setId(rs.getInt("id"));
-            campeonato.setNome(rs.getString("id"));
+            campeonato.setNome(rs.getString("nome"));
 
             return campeonato;
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "" + ex);
-            return null;
-        }
-
-    }
-    
-    public ResultSet autenticarcamp(Campeonato campeonato) {
-
-        Connection con = ConnectionFactory.getConnection();
-        PreparedStatement stmt = null;
-
-        try {
-            stmt = con.prepareStatement("SELECT * FROM campeonato WHERE id = ? and nome = ? ");
-            stmt.setInt(1, campeonato.getId());
-            stmt.setString(2, campeonato.getNome());
-            
-            
-            ResultSet rs = stmt.executeQuery();
-
-            return rs;
-
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "CAMPEONATO INVÁLIDO " + ex);
             return null;
         }
 
