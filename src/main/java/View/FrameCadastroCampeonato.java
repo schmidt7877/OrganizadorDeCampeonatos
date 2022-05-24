@@ -26,21 +26,49 @@ public class FrameCadastroCampeonato extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        btCadastrarCamp = new javax.swing.JButton();
+        tfNomeCamp = new javax.swing.JTextField();
+        tfIdUsuario = new javax.swing.JTextField();
+        Fundo = new javax.swing.JLabel();
+        telainteira = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btCadastrarCamp.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btCadastrarCamp.setText("CADASTRAR");
+        btCadastrarCamp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCadastrarCampActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btCadastrarCamp, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 420, 120, 40));
+        getContentPane().add(tfNomeCamp, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, 280, 50));
+
+        tfIdUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfIdUsuarioActionPerformed(evt);
+            }
+        });
+        getContentPane().add(tfIdUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 340, 180, 50));
+
+        Fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/FundoCadastrarCamp.png"))); // NOI18N
+        getContentPane().add(Fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(telainteira, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 53, -1, -1));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tfIdUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfIdUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfIdUsuarioActionPerformed
+
+    private void btCadastrarCampActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarCampActionPerformed
+        FrameCampeonatos tela = new FrameCampeonatos();
+        tela.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btCadastrarCampActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +106,10 @@ public class FrameCadastroCampeonato extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Fundo;
+    private javax.swing.JButton btCadastrarCamp;
+    private javax.swing.JLabel telainteira;
+    private javax.swing.JTextField tfIdUsuario;
+    private javax.swing.JTextField tfNomeCamp;
     // End of variables declaration//GEN-END:variables
 }
