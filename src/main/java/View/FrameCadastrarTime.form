@@ -38,9 +38,15 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="tfCampeonatoID">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="24" style="1"/>
+        </Property>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="410" y="350" width="170" height="50"/>
+          <AbsoluteConstraints x="400" y="350" width="190" height="50"/>
         </Constraint>
       </Constraints>
     </Component>
