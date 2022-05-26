@@ -4,6 +4,9 @@
  */
 package View;
 
+import Model.dao.TimeDAO;
+import Models.Time;
+
 /**
  *
  * @author cmate
@@ -15,6 +18,10 @@ public class FrameCadastrarTime extends javax.swing.JFrame {
      */
     public FrameCadastrarTime() {
         initComponents();
+
+        tfCampeonatoID.setEditable(false);
+        tfCampeonatoID.setText(String.valueOf(FrameVisualizarCampeonato.idcamp));
+
     }
 
     /**
@@ -26,21 +33,36 @@ public class FrameCadastrarTime extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jButton1 = new javax.swing.JButton();
+        tfCampeonatoID = new javax.swing.JTextField();
+        tfNome = new javax.swing.JTextField();
+        fundo = new javax.swing.JLabel();
+        telaCheia = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setText("CADASTRAR TIME");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 420, 140, 40));
+        getContentPane().add(tfCampeonatoID, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 350, 170, 50));
+        getContentPane().add(tfNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 230, 170, 50));
+
+        fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/CADASTRAR TIME.png"))); // NOI18N
+        getContentPane().add(fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(telaCheia, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 550, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       
+        cadastrarcamp();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +100,27 @@ public class FrameCadastrarTime extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel fundo;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel telaCheia;
+    private javax.swing.JTextField tfCampeonatoID;
+    private javax.swing.JTextField tfNome;
     // End of variables declaration//GEN-END:variables
+
+    private void cadastrarcamp() {
+        TimeDAO dao = new TimeDAO();
+        Time time = new Time();
+
+        String nometime = tfNome.getText();
+        time.setNome(nometime);
+        time.setCampeonatoId(FrameVisualizarCampeonato.idcamp);
+        
+
+        dao.create(time);
+
+        FrameMenuPrincipal tela = new FrameMenuPrincipal();
+        tela.setVisible(true);
+        this.dispose();
+    }
+
 }

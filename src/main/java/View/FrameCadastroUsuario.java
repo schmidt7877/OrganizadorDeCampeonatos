@@ -30,6 +30,7 @@ public class FrameCadastroUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btVoltar = new javax.swing.JButton();
         tfLogin = new javax.swing.JTextField();
         tfSenha = new javax.swing.JPasswordField();
         btCadastrar = new javax.swing.JButton();
@@ -40,6 +41,14 @@ public class FrameCadastroUsuario extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botao-voltar.png"))); // NOI18N
+        btVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btVoltarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         tfLogin.setToolTipText("");
         tfLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -90,6 +99,12 @@ public class FrameCadastroUsuario extends javax.swing.JFrame {
         cadastrar();
     }//GEN-LAST:event_btCadastrarActionPerformed
 
+    private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
+        FrameLogin tela = new FrameLogin();
+        tela.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btVoltarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -127,6 +142,7 @@ public class FrameCadastroUsuario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCadastrar;
+    private javax.swing.JButton btVoltar;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lbFundo;
     private javax.swing.JLabel lbLogin;
