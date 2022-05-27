@@ -133,4 +133,25 @@ public class CampeonatoDAO {
 
     }
 
+    public void delete(Campeonato campeonato) {
+
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+
+        try {
+            stmt = con.prepareStatement("DELETE FROM campeonato WHERE id = ? ");
+
+            stmt.setInt(1, campeonato.getId());
+
+            stmt.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Excluido com Sucesso!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao excluir! " + ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+
+        }
+
+    }
 }

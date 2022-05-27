@@ -67,6 +67,7 @@ public class FrameVisualizarCampeonato extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         btAcessar = new javax.swing.JToggleButton();
+        btExcluir = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -120,6 +121,14 @@ public class FrameVisualizarCampeonato extends javax.swing.JFrame {
             }
         });
 
+        btExcluir.setText("EXCLUIR CAMPEONATO");
+        btExcluir.setEnabled(false);
+        btExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btExcluirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -129,23 +138,27 @@ public class FrameVisualizarCampeonato extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btVoltar)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(578, 578, 578)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btAcessar, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(46, 46, 46)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(46, 46, 46)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3))
+                                .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(tfUsuarioId, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel1))
+                                .addGap(40, 40, 40)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(tfId, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfUsuarioId, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(106, 106, 106)
-                                .addComponent(btAcessar, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(232, Short.MAX_VALUE))
+                                    .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(240, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,12 +179,14 @@ public class FrameVisualizarCampeonato extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(tfUsuarioId, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
                         .addGap(18, 18, 18)
                         .addComponent(btAcessar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
@@ -196,11 +211,17 @@ public class FrameVisualizarCampeonato extends javax.swing.JFrame {
         tfId.setText(modelo.getValueAt(linhaselecionada, 0).toString());
         tfNome.setText(modelo.getValueAt(linhaselecionada, 1).toString());
         tfUsuarioId.setText(modelo.getValueAt(linhaselecionada, 2).toString());
-        
+
         btAcessar.setEnabled(true);
+        btExcluir.setEnabled(true);
 
 
     }//GEN-LAST:event_jtCampeonatosMouseClicked
+
+    private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
+
+        apagar();
+    }//GEN-LAST:event_btExcluirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -239,6 +260,7 @@ public class FrameVisualizarCampeonato extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btAcessar;
+    private javax.swing.JToggleButton btExcluir;
     private javax.swing.JButton btVoltar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -254,14 +276,14 @@ public class FrameVisualizarCampeonato extends javax.swing.JFrame {
 
         try {
 
-            int id = (Integer.parseInt(tfId.getText()));
+            
             String nome = tfNome.getText();
 
-            if (! nome.isEmpty()) {
+            if (!nome.isEmpty()) {
                 Campeonato campeonato = new Campeonato();
                 CampeonatoDAO dao = new CampeonatoDAO();
 
-                campeonato.setId(Integer.parseInt(tfId.getText()));
+                campeonato.setId((int)jtCampeonatos.getValueAt(jtCampeonatos.getSelectedRow(), 0) );
                 campeonato.setNome(nome);
                 ResultSet rs = dao.autenticarcamp(campeonato);
 
@@ -283,6 +305,21 @@ public class FrameVisualizarCampeonato extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "FRMLOGIN ERRO" + ex);
         }
 
+    }
+    
+    private void apagar(){
+        Campeonato campeonato = new Campeonato();
+        CampeonatoDAO dao = new CampeonatoDAO();
+        
+        campeonato.setId((int)jtCampeonatos.getValueAt(jtCampeonatos.getSelectedRow(), 0) );
+        
+        dao.delete(campeonato);
+        
+        tfId.setText("");
+        tfNome.setText("");
+        tfUsuarioId.setText("");
+        
+        
     }
 
 }
