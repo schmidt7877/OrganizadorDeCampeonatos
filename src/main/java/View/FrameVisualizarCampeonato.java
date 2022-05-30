@@ -320,6 +320,7 @@ public class FrameVisualizarCampeonato extends javax.swing.JFrame {
 
         FrameCampeonatos tela = new FrameCampeonatos();
         tela.setVisible(true);
+        this.dispose();
 
     }
 
