@@ -276,14 +276,13 @@ public class FrameVisualizarCampeonato extends javax.swing.JFrame {
 
         try {
 
-            
             String nome = tfNome.getText();
 
             if (!nome.isEmpty()) {
                 Campeonato campeonato = new Campeonato();
                 CampeonatoDAO dao = new CampeonatoDAO();
 
-                campeonato.setId((int)jtCampeonatos.getValueAt(jtCampeonatos.getSelectedRow(), 0) );
+                campeonato.setId((int) jtCampeonatos.getValueAt(jtCampeonatos.getSelectedRow(), 0));
                 campeonato.setNome(nome);
                 ResultSet rs = dao.autenticarcamp(campeonato);
 
@@ -306,20 +305,22 @@ public class FrameVisualizarCampeonato extends javax.swing.JFrame {
         }
 
     }
-    
-    private void apagar(){
+
+    private void apagar() {
         Campeonato campeonato = new Campeonato();
         CampeonatoDAO dao = new CampeonatoDAO();
-        
-        campeonato.setId((int)jtCampeonatos.getValueAt(jtCampeonatos.getSelectedRow(), 0) );
-        
+
+        campeonato.setId((int) jtCampeonatos.getValueAt(jtCampeonatos.getSelectedRow(), 0));
+
         dao.delete(campeonato);
-        
+
         tfId.setText("");
         tfNome.setText("");
         tfUsuarioId.setText("");
-        
-        
+
+        FrameCampeonatos tela = new FrameCampeonatos();
+        tela.setVisible(true);
+
     }
 
 }
