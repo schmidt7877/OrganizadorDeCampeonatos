@@ -5,12 +5,17 @@
 package Model.dao;
 
 import Connection.ConnectionFactory;
-import Models.Mapa;
-import Models.Time;
+import Models.Campeonato;
+import Models.ItemPartida;
+import Models.Partida;
+import Models.PartidaStatus;
+import Models.Usuario;
+import View.FrameLogin;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -21,22 +26,25 @@ import javax.swing.JOptionPane;
  *
  * @author cmate
  */
-public class TimeDAO {
-    
-    public void create(Time time) {
+public class PartidaDAO {
+
+    public void create(Partida partida) {
 
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement("INSERT INTO time (nome,campeonato_id)VALUES(?,?)");
-            stmt.setString(1, time.getNome());
-            stmt.setInt(2, time.getCampeonatoId());
-            
+            String query = "INSERT INTO item_partida (data, vencedor, perdedor, campeonato_id)VALUES(?,?,?,?)";
+
+            stmt = con.prepareStatement(query);
+            stmt.setString(1, OffsetDateTime.now().toString());
+            stmt.setString(1, partida.getVencedor());
+            stmt.setString(1, partida.getPerdedor());
+            stmt.setInt(1, partida.getCampeonatoId());
 
             stmt.executeUpdate();
 
-            JOptionPane.showMessageDialog(null, "Cadastro do time efetuado com Sucesso!");
+            JOptionPane.showMessageDialog(null, "Cadastro efetuado com Sucesso!");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao cadastrar: " + ex);
         } finally {
@@ -45,48 +53,51 @@ public class TimeDAO {
         }
 
     }
-    
-    public List<Time> read(int campeonatoId) {
+
+    public List<Partida> read(int idCampeonato) {
 
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
-        List<Time> times = new ArrayList<>();
+        List<Partida> partidas = new ArrayList<>();
 
         try {
 
-            stmt = con.prepareStatement("SELECT * FROM time WHERE campeonato_id = ? ");
-            stmt.setInt(1, campeonatoId);
+            stmt = con.prepareStatement("SELECT * FROM partida WHERE campeonato_id = ? ");
+            stmt.setInt(1, idCampeonato);
             rs = stmt.executeQuery();
 
             while (rs.next()) {
 
-                Time time = new Time();
+                Partida partida = new Partida();
 
-                time.setId(rs.getInt("id"));
-                time.setNome(rs.getString("nome"));
-                time.setCampeonatoId(rs.getInt("campeonato_id"));
-                times.add(time);
+                partida.setId(rs.getInt("id"));
+                //partida.setData();
+                partida.setVencedor(rs.getString("vencedor"));
+                partida.setVencedor(rs.getString("perdedor"));
+                partida.setCampeonatoId(rs.getInt("campeonato_id"));
+
+                partidas.add(partida);
 
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(MapaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PartidaDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             ConnectionFactory.closeConnection(con, stmt, rs);
         }
-        return times;
+        return partidas;
     }
 
-    public Time getbyid(int id) {
+    public Partida getbyid(int id) {
 
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
         try {
-            stmt = con.prepareStatement("SELECT * FROM time WHERE id = ? ");
+            stmt = con.prepareStatement("SELECT * FROM partida WHERE id = ? ");
 
             stmt.setInt(1, id);
 
@@ -94,13 +105,15 @@ public class TimeDAO {
 
             rs.next();
 
-            Time time = new Time();
+            Partida partida = new Partida();
 
-            time.setId(rs.getInt("id"));
-            time.setNome(rs.getString("nome"));
-            time.setCampeonatoId(rs.getInt("campeonato_id"));
+            partida.setId(rs.getInt("id"));
+            //partida.setData();
+            partida.setVencedor(rs.getString("vencedor"));
+            partida.setVencedor(rs.getString("perdedor"));
+            partida.setCampeonatoId(rs.getInt("campeonato_id"));
 
-            return time;
+            return partida;
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "" + ex);
@@ -109,15 +122,15 @@ public class TimeDAO {
 
     }
 
-    public void delete(Time time) {
+    public void delete(Partida partida) {
 
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement("DELETE FROM time WHERE id = ? ");
+            stmt = con.prepareStatement("DELETE FROM partida WHERE id = ? ");
 
-            stmt.setInt(1, time.getId());
+            stmt.setInt(1, partida.getId());
 
             stmt.executeUpdate();
 
@@ -126,9 +139,8 @@ public class TimeDAO {
             JOptionPane.showMessageDialog(null, "Erro ao excluir! " + ex);
         } finally {
             ConnectionFactory.closeConnection(con, stmt);
-
+            
         }
 
     }
-    
 }

@@ -65,15 +65,20 @@ public class FrameLogin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 390, 160, 40));
-        getContentPane().add(tfSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 320, 270, 40));
 
+        tfSenha.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        tfSenha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(tfSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 320, 280, 40));
+
+        tfLogin.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        tfLogin.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         tfLogin.setToolTipText("");
         tfLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfLoginActionPerformed(evt);
             }
         });
-        getContentPane().add(tfLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 230, 270, 40));
+        getContentPane().add(tfLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, 280, 40));
 
         lbSenha.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lbSenha.setForeground(new java.awt.Color(255, 255, 255));
