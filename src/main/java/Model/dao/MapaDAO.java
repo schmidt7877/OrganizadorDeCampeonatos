@@ -5,8 +5,10 @@
 package Model.dao;
 
 import Connection.ConnectionFactory;
+import Models.Campeonato;
 import Models.Mapa;
-import Models.Time;
+import Models.Usuario;
+import View.FrameLogin;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,22 +23,21 @@ import javax.swing.JOptionPane;
  *
  * @author cmate
  */
-public class TimeDAO {
-    
-    public void create(Time time) {
+public class MapaDAO {
+
+    public void create(Mapa mapa) {
 
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement("INSERT INTO time (nome,campeonato_id)VALUES(?,?)");
-            stmt.setString(1, time.getNome());
-            stmt.setInt(2, time.getCampeonatoId());
-            
+            stmt = con.prepareStatement("INSERT INTO mapa (nome,campeonato_id)VALUES(?,?)");
+            stmt.setString(1, mapa.getNome());
+            stmt.setInt(2, mapa.getCampeonatoId());
 
             stmt.executeUpdate();
 
-            JOptionPane.showMessageDialog(null, "Cadastro do time efetuado com Sucesso!");
+            JOptionPane.showMessageDialog(null, "Cadastro efetuado com Sucesso!");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao cadastrar: " + ex);
         } finally {
@@ -45,29 +46,29 @@ public class TimeDAO {
         }
 
     }
-    
-    public List<Time> read(int campeonatoId) {
+
+    public List<Mapa> read(int campeonatoId) {
 
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
-        List<Time> times = new ArrayList<>();
+        List<Mapa> mapas = new ArrayList<>();
 
         try {
 
-            stmt = con.prepareStatement("SELECT * FROM time WHERE campeonato_id = ? ");
+            stmt = con.prepareStatement("SELECT * FROM mapa WHERE campeonato_id = ? ");
             stmt.setInt(1, campeonatoId);
             rs = stmt.executeQuery();
 
             while (rs.next()) {
 
-                Time time = new Time();
+                Mapa mapa = new Mapa();
 
-                time.setId(rs.getInt("id"));
-                time.setNome(rs.getString("nome"));
-                time.setCampeonatoId(rs.getInt("campeonato_id"));
-                times.add(time);
+                mapa.setId(rs.getInt("id"));
+                mapa.setNome(rs.getString("nome"));
+                mapa.setCampeonatoId(rs.getInt("campeonato_id"));
+                mapas.add(mapa);
 
             }
 
@@ -76,17 +77,17 @@ public class TimeDAO {
         } finally {
             ConnectionFactory.closeConnection(con, stmt, rs);
         }
-        return times;
+        return mapas;
     }
 
-    public Time getbyid(int id) {
+    public Mapa getbyid(int id) {
 
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
         try {
-            stmt = con.prepareStatement("SELECT * FROM time WHERE id = ? ");
+            stmt = con.prepareStatement("SELECT * FROM mapa WHERE id = ? ");
 
             stmt.setInt(1, id);
 
@@ -94,13 +95,13 @@ public class TimeDAO {
 
             rs.next();
 
-            Time time = new Time();
+            Mapa mapa = new Mapa();
 
-            time.setId(rs.getInt("id"));
-            time.setNome(rs.getString("nome"));
-            time.setCampeonatoId(rs.getInt("campeonato_id"));
+            mapa.setId(rs.getInt("id"));
+            mapa.setNome(rs.getString("nome"));
+            mapa.setCampeonatoId(rs.getInt("campeonato_id"));
 
-            return time;
+            return mapa;
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "" + ex);
@@ -109,15 +110,15 @@ public class TimeDAO {
 
     }
 
-    public void delete(Time time) {
+    public void delete(Mapa mapa) {
 
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement("DELETE FROM time WHERE id = ? ");
+            stmt = con.prepareStatement("DELETE FROM mapa WHERE id = ? ");
 
-            stmt.setInt(1, time.getId());
+            stmt.setInt(1, mapa.getId());
 
             stmt.executeUpdate();
 
@@ -130,5 +131,4 @@ public class TimeDAO {
         }
 
     }
-    
 }

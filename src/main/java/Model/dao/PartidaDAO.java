@@ -72,6 +72,7 @@ public class PartidaDAO {
 
                 Partida partida = new Partida();
 
+                partida.setId(rs.getInt("id"));
                 //partida.setData();
                 partida.setVencedor(rs.getString("vencedor"));
                 partida.setVencedor(rs.getString("perdedor"));
@@ -106,6 +107,7 @@ public class PartidaDAO {
 
             Partida partida = new Partida();
 
+            partida.setId(rs.getInt("id"));
             //partida.setData();
             partida.setVencedor(rs.getString("vencedor"));
             partida.setVencedor(rs.getString("perdedor"));
@@ -137,7 +139,7 @@ public class PartidaDAO {
             JOptionPane.showMessageDialog(null, "Erro ao excluir! " + ex);
         } finally {
             ConnectionFactory.closeConnection(con, stmt);
-
+            
         }
 
     }
