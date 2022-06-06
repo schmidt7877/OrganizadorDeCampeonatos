@@ -50,14 +50,19 @@ public class FrameCadastroUsuario extends javax.swing.JFrame {
         });
         getContentPane().add(btVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
+        tfLogin.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        tfLogin.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         tfLogin.setToolTipText("");
         tfLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfLoginActionPerformed(evt);
             }
         });
-        getContentPane().add(tfLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 230, 270, 40));
-        getContentPane().add(tfSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 320, 270, 40));
+        getContentPane().add(tfLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, 280, 40));
+
+        tfSenha.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        tfSenha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(tfSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 320, 280, 40));
 
         btCadastrar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btCadastrar.setText("CADASTRAR");
