@@ -54,6 +54,8 @@ public class FrameCadastrarTime extends javax.swing.JFrame {
         tfCampeonatoID.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         tfCampeonatoID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(tfCampeonatoID, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 350, 190, 50));
+
+        tfNome.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
         getContentPane().add(tfNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 230, 170, 50));
 
         fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/CADASTRAR TIME.png"))); // NOI18N

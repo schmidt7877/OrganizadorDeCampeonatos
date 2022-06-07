@@ -53,6 +53,9 @@ public class FrameCadastroCampeonato extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btCadastrarCamp, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 420, 120, 40));
+
+        tfNomeCamp.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
+        tfNomeCamp.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(tfNomeCamp, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, 280, 50));
 
         tfIdUsuario.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
