@@ -7,6 +7,7 @@ package View;
 import Model.dao.CampeonatoDAO;
 import Models.Campeonato;
 import java.time.OffsetDateTime;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,12 +20,10 @@ public class FrameCadastroCampeonato extends javax.swing.JFrame {
      */
     public FrameCadastroCampeonato() {
         initComponents();
-        
+
         tfIdUsuario.setEditable(false);
         tfIdUsuario.setText(String.valueOf(FrameLogin.iduser));
-        
-        
-        
+
     }
 
     /**
@@ -76,12 +75,12 @@ public class FrameCadastroCampeonato extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tfIdUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfIdUsuarioActionPerformed
-        
+
     }//GEN-LAST:event_tfIdUsuarioActionPerformed
 
     private void btCadastrarCampActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarCampActionPerformed
         cadastrarcamp();
-        
+
     }//GEN-LAST:event_btCadastrarCampActionPerformed
 
     /**
@@ -126,21 +125,26 @@ public class FrameCadastroCampeonato extends javax.swing.JFrame {
     private javax.swing.JTextField tfIdUsuario;
     private javax.swing.JTextField tfNomeCamp;
     // End of variables declaration//GEN-END:variables
-private void cadastrarcamp(){
-    CampeonatoDAO dao = new CampeonatoDAO();
-        Campeonato campeonato = new Campeonato();
-        
-        
-        String nomecamp = tfNomeCamp.getText();
-        campeonato.setNome(nomecamp);
-        campeonato.setUsuarioId(FrameLogin.iduser);
-        campeonato.setData(OffsetDateTime.now());
-        
-        dao.create(campeonato);
-    
-        FrameCampeonatos tela = new FrameCampeonatos();
-        tela.setVisible(true);
-        this.dispose();
-}
+private void cadastrarcamp() {
+        CampeonatoDAO dao = new CampeonatoDAO();
+
+        if (tfNomeCamp.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "ERRO! CAMPO NOME ESTÁ VAZI0");
+        } else {
+            Campeonato campeonato = new Campeonato();
+
+            String nomecamp = tfNomeCamp.getText();
+            campeonato.setNome(nomecamp);
+            campeonato.setUsuarioId(FrameLogin.iduser);
+            campeonato.setData(OffsetDateTime.now());
+
+            dao.create(campeonato);
+
+            FrameCampeonatos tela = new FrameCampeonatos();
+            tela.setVisible(true);
+            this.dispose();
+        }
+
+    }
 
 }
