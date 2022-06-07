@@ -104,10 +104,12 @@ public class FrameVisualizarCampeonato extends javax.swing.JFrame {
         });
 
         tfNome.setEditable(false);
+        tfNome.setEnabled(false);
 
         tfUsuarioId.setEditable(false);
+        tfUsuarioId.setEnabled(false);
 
-        tfId.setEditable(false);
+        tfId.setEnabled(false);
 
         jLabel1.setText("ID:");
 
@@ -244,6 +246,7 @@ public class FrameVisualizarCampeonato extends javax.swing.JFrame {
         btAcessar.setEnabled(true);
         btExcluir.setEnabled(true);
         btEditarNome1.setEnabled(true);
+        btAtualizar.setEnabled(true);
 
 
     }//GEN-LAST:event_jtCampeonatosMouseClicked
@@ -259,6 +262,7 @@ public class FrameVisualizarCampeonato extends javax.swing.JFrame {
 
     private void btEditarNome1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarNome1ActionPerformed
         tfNome.setEditable(true);
+        tfNome.setEnabled(true);
     }//GEN-LAST:event_btEditarNome1ActionPerformed
 
     /**
@@ -372,6 +376,7 @@ public class FrameVisualizarCampeonato extends javax.swing.JFrame {
         CampeonatoDAO dao = new CampeonatoDAO();
 
         campeonato.setNome(nome);
+        campeonato.setId((int) jtCampeonatos.getValueAt(jtCampeonatos.getSelectedRow(), 0));
 
         dao.update(campeonato);
 

@@ -6,6 +6,7 @@ package View;
 
 import Model.dao.TimeDAO;
 import Models.Time;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -48,7 +49,7 @@ public class FrameCadastrarTime extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 420, 140, 40));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 420, 140, 40));
 
         tfCampeonatoID.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         tfCampeonatoID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -63,8 +64,8 @@ public class FrameCadastrarTime extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       
-        cadastrarcamp();
+
+        cadastrartime();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -110,20 +111,25 @@ public class FrameCadastrarTime extends javax.swing.JFrame {
     private javax.swing.JTextField tfNome;
     // End of variables declaration//GEN-END:variables
 
-    private void cadastrarcamp() {
-        TimeDAO dao = new TimeDAO();
-        Time time = new Time();
+    private void cadastrartime() {
 
-        String nometime = tfNome.getText();
-        time.setNome(nometime);
-        time.setCampeonatoId(FrameVisualizarCampeonato.idcamp);
-        
+        if (tfNome.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "ERRO! CAMPO NOME ESTÁ VAZI0");
+        } else {
 
-        dao.create(time);
+            TimeDAO dao = new TimeDAO();
+            Time time = new Time();
 
-        FrameMenuPrincipal tela = new FrameMenuPrincipal();
-        tela.setVisible(true);
-        this.dispose();
+            String nometime = tfNome.getText();
+            time.setNome(nometime);
+            time.setCampeonatoId(FrameVisualizarCampeonato.idcamp);
+
+            dao.create(time);
+
+            FrameMenuPrincipal tela = new FrameMenuPrincipal();
+            tela.setVisible(true);
+            this.dispose();
+        }
+
     }
-
 }
