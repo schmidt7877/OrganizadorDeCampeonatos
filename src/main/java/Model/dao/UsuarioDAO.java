@@ -5,6 +5,7 @@
 package Model.dao;
 
 import Connection.ConnectionFactory;
+import Models.Time;
 import Models.Usuario;
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -102,6 +103,28 @@ public class UsuarioDAO {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "" + ex);
             return null;
+        }
+
+    }
+    
+    public void delete(Usuario user) {
+
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+
+        try {
+            stmt = con.prepareStatement("DELETE FROM usuario WHERE id = ? ");
+
+            stmt.setInt(1, user.getId());
+
+            stmt.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Excluido com Sucesso!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao excluir! " + ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+
         }
 
     }

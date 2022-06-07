@@ -168,9 +168,9 @@ public class CampeonatoDAO {
 
             stmt.executeUpdate();
 
-            JOptionPane.showMessageDialog(null, "Excluido com Sucesso!");
+            JOptionPane.showMessageDialog(null, "Atualizado com Sucesso!");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao excluir! " + ex);
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar! " + ex);
         } finally {
             ConnectionFactory.closeConnection(con, stmt);
 
