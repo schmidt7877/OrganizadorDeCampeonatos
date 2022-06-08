@@ -60,6 +60,13 @@ public class Partida {
     public void setCampeonatoId(int campeonatoId) {
         this.campeonatoId = campeonatoId;
     }
+
+    @Override
+    public String toString() {
+        return id + " " + " " + data + " " + vencedor + " " + perdedor + " " +campeonatoId;
+    }
+    
+    
     
     
 }

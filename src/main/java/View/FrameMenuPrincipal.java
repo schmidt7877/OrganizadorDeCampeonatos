@@ -35,6 +35,7 @@ public class FrameMenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btVoltar = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         lbNomeCampeonato = new javax.swing.JLabel();
@@ -48,6 +49,14 @@ public class FrameMenuPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botao-voltar.png"))); // NOI18N
+        btVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btVoltarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
 
         jButton8.setBackground(new java.awt.Color(0, 0, 0));
         jButton8.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
@@ -193,6 +202,12 @@ public class FrameMenuPrincipal extends javax.swing.JFrame {
        this.dispose();
     }//GEN-LAST:event_jButton8ActionPerformed
 
+    private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
+        FrameCampeonatos tela = new FrameCampeonatos();
+        tela.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btVoltarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -230,6 +245,7 @@ public class FrameMenuPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel FundoMenuPrincipal;
+    private javax.swing.JButton btVoltar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
