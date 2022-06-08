@@ -5,6 +5,7 @@
 package View;
 
 import Model.dao.PlayerDAO;
+import Model.dao.TimeDAO;
 import Models.Player;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -52,15 +53,13 @@ public class FrameVisualizarPlayers extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "id", "Nome", "time_id"
             }
         ));
+        jTable1.setEnabled(false);
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -91,6 +90,7 @@ public class FrameVisualizarPlayers extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
@@ -150,10 +150,16 @@ public class FrameVisualizarPlayers extends javax.swing.JFrame {
             modelo.addRow(new Object[]{
                 p.getId(),
                 p.getNome(),
-                p.getTimeId(),});
+                buscarnometime(p.getTimeId()),});
 
         }
 
     }
+ 
+ private String buscarnometime(int id) {
+     TimeDAO dao = new TimeDAO();
+     return dao.getbyid(id).getNome();
+     
+ }
 
 }

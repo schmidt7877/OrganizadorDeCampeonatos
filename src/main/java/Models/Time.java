@@ -40,6 +40,11 @@ public class Time {
     public void setCampeonatoId(int campeonatoId) {
         this.campeonatoId = campeonatoId;
     }
+
+    @Override
+    public String toString() {
+        return getNome();
+    }
     
     
     

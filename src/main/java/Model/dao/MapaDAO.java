@@ -5,10 +5,7 @@
 package Model.dao;
 
 import Connection.ConnectionFactory;
-import Models.Campeonato;
 import Models.Mapa;
-import Models.Usuario;
-import View.FrameLogin;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
