@@ -97,7 +97,7 @@ public class FrameVisualizarTimes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
-        FrameCampeonatos tela = new FrameCampeonatos();
+        FrameMenuPrincipal tela = new FrameMenuPrincipal();
         tela.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btVoltarActionPerformed
