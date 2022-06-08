@@ -51,10 +51,7 @@ public class FrameVisualizarPartidas extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "id", "vencedor", "perdedor"
@@ -146,7 +143,7 @@ public class FrameVisualizarPartidas extends javax.swing.JFrame {
             modelo.addRow(new Object[]{
                 p.getId(),
                 p.getVencedor(),
-                p.getVencedor(),});
+                p.getPerdedor(),});
 
         }
 

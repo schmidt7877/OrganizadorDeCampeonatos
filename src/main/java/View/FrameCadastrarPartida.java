@@ -207,8 +207,8 @@ public class FrameCadastrarPartida extends javax.swing.JFrame {
     private javax.swing.JButton btCadastrarPartida;
     private javax.swing.JButton btVoltar;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JComboBox<Object> jComboEquipeA;
-    private javax.swing.JComboBox<Object> jComboEquipeB;
+    private javax.swing.JComboBox<Time> jComboEquipeA;
+    private javax.swing.JComboBox<Time> jComboEquipeB;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel8;
@@ -227,6 +227,8 @@ public class FrameCadastrarPartida extends javax.swing.JFrame {
         partida.setVencedor(time.getNome());
         partida.setPerdedor(time2.getNome());
         partida.setCampeonatoId(FrameVisualizarCampeonato.idcamp);
+        
+        System.out.println(partida);
 
         dao.create(partida);
 
