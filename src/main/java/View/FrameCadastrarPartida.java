@@ -8,6 +8,7 @@ import Model.dao.PartidaDAO;
 import Model.dao.TimeDAO;
 import Models.Partida;
 import Models.Time;
+import java.time.OffsetDateTime;
 import javax.swing.JOptionPane;
 
 /**
@@ -148,7 +149,7 @@ public class FrameCadastrarPartida extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboEquipeACaretPositionChanged
 
     private void btCadastrarPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarPartidaActionPerformed
-
+        cadastrar();
     }//GEN-LAST:event_btCadastrarPartidaActionPerformed
 
     private void labelIconeVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelIconeVoltarMouseClicked
@@ -218,9 +219,14 @@ public class FrameCadastrarPartida extends javax.swing.JFrame {
     private void cadastrar() {
         Partida partida = new Partida();
         PartidaDAO dao = new PartidaDAO();
-
-        partida.setVencedor((String) jComboEquipeA.getSelectedItem());
-        partida.setPerdedor((String) jComboEquipeB.getSelectedItem());
+        
+        Time time = ((Time) jComboEquipeA.getSelectedItem());
+        Time time2 = ((Time) jComboEquipeB.getSelectedItem());
+        
+        partida.setData(OffsetDateTime.now());
+        partida.setVencedor(time.getNome());
+        partida.setPerdedor(time2.getNome());
+        partida.setCampeonatoId(FrameVisualizarCampeonato.idcamp);
 
         dao.create(partida);
 

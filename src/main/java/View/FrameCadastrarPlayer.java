@@ -60,7 +60,7 @@ public class FrameCadastrarPlayer extends javax.swing.JFrame {
                 btCadastrarActionPerformed(evt);
             }
         });
-        getContentPane().add(btCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 420, 140, 30));
+        getContentPane().add(btCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 420, 150, 40));
 
         lbTime.setFont(new java.awt.Font("Segoe UI", 1, 29)); // NOI18N
         lbTime.setForeground(new java.awt.Color(255, 255, 255));

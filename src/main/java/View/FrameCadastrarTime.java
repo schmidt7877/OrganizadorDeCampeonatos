@@ -34,6 +34,7 @@ public class FrameCadastrarTime extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btVoltar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         tfCampeonatoID = new javax.swing.JTextField();
         tfNome = new javax.swing.JTextField();
@@ -42,6 +43,14 @@ public class FrameCadastrarTime extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botao-voltar.png"))); // NOI18N
+        btVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btVoltarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, -1));
 
         jButton1.setText("CADASTRAR TIME");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -63,12 +72,19 @@ public class FrameCadastrarTime extends javax.swing.JFrame {
         getContentPane().add(telaCheia, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 550, -1, -1));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         cadastrartime();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
+        FrameMenuPrincipal tela = new FrameMenuPrincipal();
+        tela.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btVoltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -106,6 +122,7 @@ public class FrameCadastrarTime extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btVoltar;
     private javax.swing.JLabel fundo;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel telaCheia;
