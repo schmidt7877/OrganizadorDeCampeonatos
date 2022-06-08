@@ -34,13 +34,13 @@ public class PartidaDAO {
         PreparedStatement stmt = null;
 
         try {
-            String query = "INSERT INTO item_partida (data, vencedor, perdedor, campeonato_id)VALUES(?,?,?,?)";
+            String query = "INSERT INTO partida (data, vencedor, perdedor, campeonato_id)VALUES(?,?,?,?)";
 
             stmt = con.prepareStatement(query);
             stmt.setString(1, OffsetDateTime.now().toString());
-            stmt.setString(1, partida.getVencedor());
-            stmt.setString(1, partida.getPerdedor());
-            stmt.setInt(1, partida.getCampeonatoId());
+            stmt.setString(2, partida.getVencedor());
+            stmt.setString(3, partida.getPerdedor());
+            stmt.setInt(4, partida.getCampeonatoId());
 
             stmt.executeUpdate();
 
