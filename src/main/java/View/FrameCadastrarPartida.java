@@ -228,7 +228,6 @@ public class FrameCadastrarPartida extends javax.swing.JFrame {
         partida.setPerdedor(time2.getNome());
         partida.setCampeonatoId(FrameVisualizarCampeonato.idcamp);
         
-        System.out.println(partida);
 
         dao.create(partida);
 

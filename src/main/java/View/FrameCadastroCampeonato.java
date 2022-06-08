@@ -35,6 +35,7 @@ public class FrameCadastroCampeonato extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btVoltar = new javax.swing.JButton();
         btCadastrarCamp = new javax.swing.JButton();
         tfNomeCamp = new javax.swing.JTextField();
         tfIdUsuario = new javax.swing.JTextField();
@@ -43,6 +44,14 @@ public class FrameCadastroCampeonato extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botao-voltar.png"))); // NOI18N
+        btVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btVoltarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
 
         btCadastrarCamp.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btCadastrarCamp.setText("CADASTRAR");
@@ -83,6 +92,12 @@ public class FrameCadastroCampeonato extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btCadastrarCampActionPerformed
 
+    private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
+        FrameCampeonatos tela = new FrameCampeonatos();
+        tela.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btVoltarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -121,6 +136,7 @@ public class FrameCadastroCampeonato extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Fundo;
     private javax.swing.JButton btCadastrarCamp;
+    private javax.swing.JButton btVoltar;
     private javax.swing.JLabel telainteira;
     private javax.swing.JTextField tfIdUsuario;
     private javax.swing.JTextField tfNomeCamp;

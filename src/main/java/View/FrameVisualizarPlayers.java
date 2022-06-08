@@ -56,7 +56,7 @@ public class FrameVisualizarPlayers extends javax.swing.JFrame {
 
             },
             new String [] {
-                "id", "Nome", "time_id"
+                "id", "Nome", "time"
             }
         ));
         jTable1.setEnabled(false);

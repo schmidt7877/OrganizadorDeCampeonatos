@@ -36,7 +36,6 @@ public class PartidaDAO {
         try {
             String query = "INSERT INTO partida (data, vencedor, perdedor, campeonato_id) VALUES (?,?,?,?)";
 
-            System.out.println(partida);
             
             stmt = con.prepareStatement(query);
             stmt.setString(1, OffsetDateTime.now().toString());
