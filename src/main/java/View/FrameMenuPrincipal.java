@@ -74,7 +74,7 @@ public class FrameMenuPrincipal extends javax.swing.JFrame {
         lbNomeCampeonato.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         lbNomeCampeonato.setForeground(new java.awt.Color(255, 255, 255));
         lbNomeCampeonato.setText("NOME DO CAMPEONATO");
-        getContentPane().add(lbNomeCampeonato, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 360, 40));
+        getContentPane().add(lbNomeCampeonato, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 170, 40));
 
         jButton4.setBackground(new java.awt.Color(0, 0, 0));
         jButton4.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
