@@ -140,7 +140,6 @@ public class FrameVisualizarPartidas extends javax.swing.JFrame {
 
         for (Partida p : dao.read(FrameVisualizarCampeonato.idcamp)) {
             
-            System.out.println(p);
 
             modelo.addRow(new Object[]{
                 p.getId(),
