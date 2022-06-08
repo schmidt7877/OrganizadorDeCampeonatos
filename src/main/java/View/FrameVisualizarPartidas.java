@@ -139,11 +139,13 @@ public class FrameVisualizarPartidas extends javax.swing.JFrame {
         PartidaDAO dao = new PartidaDAO();
 
         for (Partida p : dao.read(FrameVisualizarCampeonato.idcamp)) {
+            
+            System.out.println(p);
 
             modelo.addRow(new Object[]{
                 p.getId(),
                 p.getVencedor(),
-                p.getPerdedor(),});
+                p.getPerdedor()});
 
         }
 

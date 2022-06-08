@@ -79,7 +79,7 @@ public class PartidaDAO {
                 partida.setId(rs.getInt("id"));
                 //partida.setData();
                 partida.setVencedor(rs.getString("vencedor"));
-                partida.setVencedor(rs.getString("perdedor"));
+                partida.setPerdedor(rs.getString("perdedor"));
                 partida.setCampeonatoId(rs.getInt("campeonato_id"));
 
                 partidas.add(partida);
