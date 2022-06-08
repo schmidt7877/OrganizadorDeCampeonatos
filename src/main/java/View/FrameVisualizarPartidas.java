@@ -20,8 +20,6 @@ public class FrameVisualizarPartidas extends javax.swing.JFrame {
      */
     public FrameVisualizarPartidas() {
         initComponents();
-        
-        initComponents();
 
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
         jTable1.setRowSorter(new TableRowSorter(modelo));
