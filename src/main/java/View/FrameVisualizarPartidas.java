@@ -57,6 +57,7 @@ public class FrameVisualizarPartidas extends javax.swing.JFrame {
                 "id", "vencedor", "perdedor"
             }
         ));
+        jTable1.setEnabled(false);
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
